@@ -52,6 +52,7 @@ public class editPGiftListServlet extends HttpServlet {
 
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
 			PersonalGift giftToDelete = pgifthelp.getGiftById(tempId);
+			System.out.println(giftToDelete.toString());
 			Integer tempRId = giftToDelete.getRecipient().getId();
 			pgifthelp.deleteGift(giftToDelete);
 

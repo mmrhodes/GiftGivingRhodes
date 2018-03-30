@@ -1,11 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.PersonRecipient;
 
 /**
  * Servlet implementation class viewAllPRecipientsServlet
@@ -28,13 +32,15 @@ public class viewAllPRecipientsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		PersonRecipientHelper phelp = new PersonRecipientHelper();
-		request.setAttribute("personList",phelp.getRecipients());
+		List<PersonRecipient> recipients = phelp.getRecipients();
+		System.out.println(recipients);
+		request.setAttribute("personList",recipients);
+		
 
-		if (phelp.getRecipients().isEmpty()){
+		if (recipients.isEmpty()){
 			request.setAttribute("personList", " ");
 		}
 		getServletContext().getRequestDispatcher("/precipient-list.jsp").forward(request, response);

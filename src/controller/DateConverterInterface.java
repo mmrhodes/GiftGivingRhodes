@@ -12,13 +12,12 @@ public class DateConverterInterface implements AttributeConverter<LocalDate, Dat
 
 	@Override
 	public Date convertToDatabaseColumn(LocalDate attribute) {
-		// TODO Auto-generated method stub
+	
 		return attribute ==null ? null : Date.valueOf(attribute);
 	}
 
 	@Override
 	public LocalDate convertToEntityAttribute(Date dbData) {
-		// TODO Auto-generated method stub
 		return dbData ==null ? null : dbData.toLocalDate();
 	}
 
